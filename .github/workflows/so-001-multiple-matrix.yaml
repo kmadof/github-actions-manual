@@ -27,5 +27,5 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ matrix.dotnet }}
-    - run: npm --version
+    - run: node --version
     - run: dotnet --version
