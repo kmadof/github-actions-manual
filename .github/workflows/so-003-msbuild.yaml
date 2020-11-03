@@ -31,4 +31,4 @@ jobs:
     - name: MSTest
       working-directory: src
       continue-on-error: true
-      run: mstest MyProject.csproj
+      run: mstest
