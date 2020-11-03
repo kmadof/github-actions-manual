@@ -1,0 +1,29 @@
+name: MSBuild and MSTest CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        vs-version: '[16.4,16.5)'
+
+    - name: MSBuild
+      working-directory: src
+      continue-on-error: true
+      run: msbuild MyProject.csproj
+
+    - name: MSTest
+      working-directory: src
+      continue-on-error: true
+      run: mstest MyProject.csproj
