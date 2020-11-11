@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - ${{env.default-branch}}
+      - master
 
 jobs:
   check-branch:
