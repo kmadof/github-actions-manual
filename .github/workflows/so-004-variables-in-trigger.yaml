@@ -1,0 +1,14 @@
+env:
+  default-branch: 'master'
+
+on:
+  push:
+    branches:
+      - ${{env.default-branch}}
+
+jobs:
+  check-pygame:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get color
+      run: echo "The selected color is ${{env.default-branch}}"

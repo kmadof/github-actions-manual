@@ -1,0 +1,77 @@
+{
+    "ResourceSetRegistration": {
+        "ResourceDefinitionType": "Storyteller.Domain.Domain.Pages.PageAssetVideoResourceDefinition, Storyteller.Domain, Version=3.32.0.0, Culture=neutral, PublicKeyToken=null",
+        "Name": null
+    },
+    "Response": {
+        "EntityKeys": [
+            "afd87572-5369-e907-3f63-39f8a11b7887"
+        ],
+        "EntityType": "Storyteller.Domain.Domain.Pages.Page, Storyteller.Domain, Version=3.32.0.0, Culture=neutral, PublicKeyToken=null",
+        "Result": {
+            "Success": true,
+            "Message": null,
+            "Url": "https://twdcstoriesstaging.azureedge.net/uploads/espn/2020/308/7ce73b16-1411-4365-8a51-c16e1cd8eb6b/original.mp4",
+            "Exception": null,
+            "Container": "uploads",
+            "Name": "Pexels Videos 1826904.mp4"
+        }
+    },
+    "Result": {
+        "Job": {
+            "properties.created": "2020-11-03T16:29:21.8048537Z",
+            "properties.state": "Scheduled",
+            "properties.description": "AssetVideo.mp4",
+            "properties.input": {},
+            "properties.lastModified": "2020-11-03T16:29:21.8048537Z",
+            "properties.outputs": [
+                {
+                    "error": null,
+                    "state": "Queued",
+                    "progress": 0,
+                    "label": "StandardEncoderPreset_0",
+                    "startTime": null,
+                    "endTime": null
+                }
+            ],
+            "properties.priority": "Normal",
+            "properties.correlationData": {},
+            "properties.startTime": null,
+            "properties.endTime": null,
+            "id": "/subscriptions/375550b4-76c1-4f88-939f-461e3169c1b0/resourceGroups/Staging/providers/Microsoft.Media/mediaservices/storytellerstaging/transforms/PageAssetVideoResourceDefinition/jobs/job-21356431bb6c4649bb642fab54187a04",
+            "name": "job-21356431bb6c4649bb642fab54187a04",
+            "type": "Microsoft.Media/mediaservices/transforms/jobs"
+        },
+        "JobName": "job-21356431bb6c4649bb642fab54187a04",
+        "OutputAssetName": "output-21356431bb6c4649bb642fab54187a04",
+        "ResourceGroup": "Staging",
+        "AccountName": "storytellerstaging",
+        "TransformName": "PageAssetVideoResourceDefinition"
+    },
+    "EntityType": "Storyteller.Domain.Domain.Pages.Page, Storyteller.Domain, Version=3.32.0.0, Culture=neutral, PublicKeyToken=null",
+    "ProcessArgs": {
+        "Name": "AssetVideo",
+        "EntityType": "Storyteller.Domain.Domain.Pages.Page, Storyteller.Domain, Version=3.32.0.0, Culture=neutral, PublicKeyToken=null",
+        "EntityKeys": [
+            "afd87572-5369-e907-3f63-39f8a11b7887"
+        ],
+        "ResourceTransportResponse": {
+            "EntityKeys": [
+                "afd87572-5369-e907-3f63-39f8a11b7887"
+            ],
+            "EntityType": "Storyteller.Domain.Domain.Pages.Page, Storyteller.Domain, Version=3.32.0.0, Culture=neutral, PublicKeyToken=null",
+            "Result": {
+                "Success": true,
+                "Message": null,
+                "Url": "https://twdcstoriesstaging.azureedge.net/uploads/espn/2020/308/7ce73b16-1411-4365-8a51-c16e1cd8eb6b/original.mp4",
+                "Exception": null,
+                "Container": "uploads",
+                "Name": "Pexels Videos 1826904.mp4"
+            }
+        },
+        "ResourceId": "55b7cf20-82cc-18ba-291c-39f8a11b7887",
+        "TenantId": "d97e0a12-a2b1-f69b-1d60-39f5fdb1d27c"
+    },
+    "ResourceId": "55b7cf20-82cc-18ba-291c-39f8a11b7887",
+    "TenantId": "d97e0a12-a2b1-f69b-1d60-39f5fdb1d27c"
+}"
