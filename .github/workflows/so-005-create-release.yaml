@@ -41,6 +41,6 @@ jobs:
         with:
 
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: "dist/*"
+          artifacts: "test.ps1"
           bodyFile: "README.md"
           draft: true
