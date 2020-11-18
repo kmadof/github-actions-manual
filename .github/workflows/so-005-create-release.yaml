@@ -33,6 +33,13 @@ jobs:
 
           fetch-depth: 0
 
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
 
       - name: Create Release
 
@@ -41,6 +48,5 @@ jobs:
         with:
 
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: "test.ps1"
           bodyFile: "README.md"
           draft: true
