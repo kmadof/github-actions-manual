@@ -1,0 +1,41 @@
+name: dev-release
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    name: setup environment
+
+    runs-on: ubuntu-latest
+
+    strategy:
+
+      matrix:
+
+        node-version: [12.x]
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+        with:
+
+          fetch-depth: 0
+
+
+      - name: Create Release
+
+        uses: ncipollo/release-action@v1
+
+        with:
+
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "dist/*"
+          bodyFile: "README.md"
+          draft: true
