@@ -47,5 +47,3 @@ jobs:
           artifacts: "test.ps1"
           bodyFile: "README.md"
           draft: true
-          commit: master
-          tag: v1.0.${{ github.run_number }}
