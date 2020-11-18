@@ -44,6 +44,6 @@ jobs:
         with:
 
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: "dist-without-markdown.zip"
+          artifacts: dist-without-markdown
           bodyFile: "README.md"
           draft: true
