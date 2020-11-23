@@ -28,5 +28,5 @@ jobs:
         uses: Amadevus/pwsh-script@v2.0.0
         with:
           # PowerShell script to execute in Actions-hydrated context
-          script: Write-Host env:somevar
+          script: Write-Host $env:somevar
       
