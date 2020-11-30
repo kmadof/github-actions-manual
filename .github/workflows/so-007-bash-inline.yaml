@@ -15,6 +15,7 @@ jobs:
     steps:
     - name: Get color
       run: |
+        ls
         if [ -d "/path/to/dir" ] 
         then
             echo "Directory /path/to/dir exists."
