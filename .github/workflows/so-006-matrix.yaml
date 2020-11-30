@@ -14,11 +14,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
-        node: [6, 8, 10]
+        python-version: ['3.5', '3.8', '3.9']
+        toxenv: ['django22', 'django30','django31']
     steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
+    - uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
 
 
 # jobs:
