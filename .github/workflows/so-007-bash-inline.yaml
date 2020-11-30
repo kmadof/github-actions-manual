@@ -13,10 +13,11 @@ jobs:
   run_tests:
     runs-on: ubuntu-20.04
     steps:
-    - name: Get color
+    - uses: actions/checkout@v2
+    - name: Check folder
       run: |
         ls
-        if [ -d "/path/to/dir" ] 
+        if [ -d "/dist" ] 
         then
             echo "Directory /path/to/dir exists."
             
