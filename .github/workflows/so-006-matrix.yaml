@@ -26,11 +26,8 @@ jobs:
           - python-version: '3.5'
             toxenv: 'django31'
     steps:
-    - uses: actions/checkout@v2
-    - name: setup python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+    - name: Get color
+      run: echo "${{ matrix.os }} - ${{ matrix.python-version }} - ${{ matrix.toxenv }}"
 
 
 # jobs:
