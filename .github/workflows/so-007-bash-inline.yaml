@@ -1,0 +1,26 @@
+#https://stackoverflow.com/questions/65067320/how-can-i-stop-cancel-a-workflow-with-an-error-message-when-a-directory-does-not
+name: Bash exit
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  
+  workflow_dispatch:
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Get color
+      run: |
+        if [ -d "/path/to/dir" ] 
+        then
+            echo "Directory /path/to/dir exists."
+            
+        else
+            echo "Error: Directory /path/to/dir does not exists."
+            throw "Error: Directory /path/to/dir does not exists."
+        fi
+
