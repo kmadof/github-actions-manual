@@ -19,11 +19,11 @@ jobs:
         include:
           - python-version: '3.8'
             toxenv: 'quality'
-        exclude:
-          - python-version: '3.5'
-            toxenv: 'django30'
-          - python-version: '3.5'
-            toxenv: 'django31'
+        # exclude:
+        #   - python-version: '3.5'
+        #     toxenv: 'django30'
+        #   - python-version: '3.5'
+        #     toxenv: 'django31'
     steps:
     - uses: actions/checkout@v2
     - name: setup python
