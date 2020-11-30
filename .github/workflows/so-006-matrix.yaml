@@ -13,13 +13,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+        os: [ubuntu-20.04]
         python-version: ['3.5', '3.8', '3.9']
         toxenv: ['django22', 'django30','django31']
-        # include:
-        #   - python-version: '3.8'
-        #     toxenv: 'quality'
-        #     os: []
+        include:
+          - python-version: '3.8'
+            toxenv: 'quality'
+            os: [ubuntu-20.04]
         exclude:
           - python-version: '3.5'
             toxenv: 'django30'
