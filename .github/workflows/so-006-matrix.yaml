@@ -19,6 +19,7 @@ jobs:
         include:
           - python-version: '3.8'
             toxenv: 'quality'
+            os: []
         # exclude:
         #   - python-version: '3.5'
         #     toxenv: 'django30'
