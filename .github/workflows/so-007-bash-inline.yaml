@@ -17,7 +17,7 @@ jobs:
     - name: Check folder
       run: |
         ls
-        if [ -d "/dist" ] 
+        if [ -d "dist" ] 
         then
             echo "Directory /path/to/dir exists."
             
