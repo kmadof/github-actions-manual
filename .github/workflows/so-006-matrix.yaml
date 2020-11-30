@@ -1,3 +1,5 @@
+name: Testing matrix strategy
+
 on:
   push:
     branches: [ master ]
@@ -8,43 +10,56 @@ on:
 
 jobs:
   run_tests:
-    name: Tests
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-        python-version: ['3.5', '3.8', '3.9']
-        toxenv: ['django22', 'django30','django31']
-        include:
-          - python-version: "3.8"
-            toxenv: "quality"
-        exclude:
-          - python-version: "3.5"
-            toxenv: "django30"
-          - python-version: "3.5"
-            toxenv: "django31"
-
+        os: [ubuntu-16.04, ubuntu-18.04]
+        node: [6, 8, 10]
     steps:
-    - uses: actions/checkout@v2
-    - name: setup python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
 
-    - name: Install pip
-      run: pip install -r requirements/pip.txt
 
-    - name: Install Dependencies
-      run: pip install -r requirements/ci.txt
+# jobs:
+#   run_tests:
+#     name: Tests
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       matrix:
+#         os: [ubuntu-18.04, ubuntu-20.04]
+#         python-version: ['3.5', '3.8', '3.9']
+#         toxenv: ['django22', 'django30','django31']
+#         include:
+#           - python-version: "3.8"
+#             toxenv: "quality"
+#         exclude:
+#           - python-version: "3.5"
+#             toxenv: "django30"
+#           - python-version: "3.5"
+#             toxenv: "django31"
 
-    - name: Run Tests
-      env:
-        TOXENV: python${{ matrix.python-version }}-${{ matrix.toxenv }}
-      run: tox
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: setup python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: ${{ matrix.python-version }}
 
-    # it'll run a separate job for quality checks with python 3.8
-    - name: Run Quality
-      if: matrix.python-version == '3.8' && matrix.toxenv=='quality'
-      env:
-        TOXENV: ${{ matrix.toxenv }}
-      run: tox
+#     - name: Install pip
+#       run: pip install -r requirements/pip.txt
+
+#     - name: Install Dependencies
+#       run: pip install -r requirements/ci.txt
+
+#     - name: Run Tests
+#       env:
+#         TOXENV: python${{ matrix.python-version }}-${{ matrix.toxenv }}
+#       run: tox
+
+#     # it'll run a separate job for quality checks with python 3.8
+#     - name: Run Quality
+#       if: matrix.python-version == '3.8' && matrix.toxenv=='quality'
+#       env:
+#         TOXENV: ${{ matrix.toxenv }}
+#       run: tox
