@@ -1,0 +1,22 @@
+# https://stackoverflow.com/questions/65124227/github-action-save-images-with-curl-it-saves-blank-images
+name: Curl PNG
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  
+  workflow_dispatch:
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: add icon
+      run:  curl https://i.pinimg.com/originals/ca/a9/df/caa9df0ae36595e7d4b9961596adc218.png > some.png
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: some.png
+
