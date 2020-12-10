@@ -49,7 +49,7 @@ jobs:
         if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
       - name: Create a GitHub release
         uses: actions/create-release@v1
-        if: ${{ github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
+        if: ${{ false && github.event_name == 'push' && runner.os == 'Linux' && matrix.java == '11' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
