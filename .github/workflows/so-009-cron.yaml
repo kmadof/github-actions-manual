@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: Is variable exported?
         run: |
-          echo 'Hello''
+          echo 'Hello'
