@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/65227046/github-tag-action-does-not-add-tag
 
-name: build
+name: cron-test
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
