@@ -1,0 +1,18 @@
+# https://stackoverflow.com/questions/65227046/github-tag-action-does-not-add-tag
+
+name: build
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/15 * * * *'
+    - cron:  '*/30 * * * *'
+  
+  workflow_dispatch:
+
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Is variable exported?
+        run: |
+          echo 'Hello''
