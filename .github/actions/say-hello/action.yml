@@ -18,4 +18,8 @@ runs:
       shell: pwsh
     - run: echo "${{ inputs.upload-artifacts-path }}"
       shell: pwsh
+    - name: Dump steps context
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
     

@@ -20,3 +20,7 @@ jobs:
       with: 
         name: OctoCat
         upload-artifacts-path: "$upload_artifacts_path"
+    - run: echo "$deploy_powershell_script"
+      shell: pwsh
+    - run: echo "$upload_artifacts_path"
+      shell: pwsh
