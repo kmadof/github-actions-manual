@@ -2,6 +2,9 @@ inputs:
   name: 
     description: 'Your name'
     default: 'No name provided'
+  upload_artifacts_path: 
+    description: 'Path'
+    default: "some/path"
 runs:
   using: "composite"
   steps: 
