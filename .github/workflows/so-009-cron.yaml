@@ -4,8 +4,8 @@ name: cron-test
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '*/15 * * * *'
-    - cron:  '*/30 * * * *'
+    - cron:  '*/1 * * * *'
+    - cron:  '*/2 * * * *'
   
   workflow_dispatch:
 
