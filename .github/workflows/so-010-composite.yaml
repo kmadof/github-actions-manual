@@ -16,7 +16,7 @@ jobs:
       
     steps:
     - uses: actions/checkout@v2
-    - uses: .github/actions/say-hello@v1
+    - uses: ./.github/actions/say-hello
       with: 
         name: OctoCat
         upload-artifacts-path: $upload_artifacts_path
