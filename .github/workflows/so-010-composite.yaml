@@ -1,0 +1,22 @@
+name: composite
+on:
+  workflow_dispatch:
+
+env:
+  deploy_powershell_script:  "D:\\github-deploy-ps.ps1"
+
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      stop_powershell_script:  "D:\\stop-website-ps.ps1"
+      upload_artifacts_path: "./pashdotnetcorewebapp"
+      
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/say-hello@v1
+      with: 
+        name: OctoCat
+        upload-artifacts-path: $upload_artifacts_path

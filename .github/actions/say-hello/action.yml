@@ -1,0 +1,18 @@
+inputs:
+  name: 
+    description: 'Your name'
+    default: 'No name provided'
+runs:
+  using: "composite"
+  steps: 
+    - run: echo Hello ${{ inputs.name }}.
+      shell: bash
+    - run: echo "Nice to meet you!"
+      shell: pwsh
+    - run: echo "$deploy_powershell_script"
+      shell: pwsh
+    - run: echo "$stop_powershell_script"
+      shell: pwsh
+    - run: echo "${{ inputs.upload_artifacts_path }}"
+      shell: pwsh
+    
