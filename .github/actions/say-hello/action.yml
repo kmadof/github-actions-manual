@@ -11,11 +11,11 @@ runs:
     - run: echo Hello ${{ inputs.name }}.
       shell: bash
     - run: echo "Nice to meet you!"
-      shell: pwsh
+      shell: bash
     - run: echo "$deploy_powershell_script"
-      shell: pwsh
+      shell: bash
     - run: echo "$stop_powershell_script"
-      shell: pwsh
+      shell: bash
     - run: echo "${{ inputs.upload-artifacts-path }}"
-      shell: pwsh
+      shell: bash
     
