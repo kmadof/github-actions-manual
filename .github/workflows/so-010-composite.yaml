@@ -19,4 +19,4 @@ jobs:
     - uses: ./.github/actions/say-hello
       with: 
         name: OctoCat
-        upload-artifacts-path: $upload_artifacts_path
+        upload-artifacts-path: "$upload_artifacts_path"
