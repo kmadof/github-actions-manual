@@ -1,5 +1,10 @@
 #https://stackoverflow.com/questions/65287308/github-env-variable-in-github-actions
 
+name: set-variable-01
+on:
+  workflow_dispatch:
+
+
 jobs:
   # Create release branch for the week
   branch:
