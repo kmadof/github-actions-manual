@@ -1,0 +1,25 @@
+#https://stackoverflow.com/questions/65355733/github-actions-homebrew-slow
+
+name: so-012-cplusplus
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        include:
+        - os: ubuntu-latest
+          INSTALL_DEPS: sudo apt-get install -yq libboost-dev libboost-graph-dev lua5.3 liblua5.3-dev
+          CC: gcc
+          CXX: g++
+        - os: macos-latest
+          INSTALL_DEPS: brew install boost lua
+          CC: clang
+          CXX: clang++
+    steps:
+      - uses: actions/checkout@v2
+      - name: install-dependencies
+        run: ${{ matrix.INSTALL_DEPS }}
