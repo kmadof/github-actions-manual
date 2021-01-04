@@ -1,0 +1,20 @@
+#https://stackoverflow.com/questions/65530775/github-on-schedule-action-workflow-executes-in-delay-or-not-at-all
+
+name: scheduled-run
+
+on:
+  schedule:
+    # UTC time
+    - cron: "55 13,14,15 1,4,15,30 * *"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
