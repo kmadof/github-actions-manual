@@ -1,0 +1,17 @@
+#https://stackoverflow.com/questions/65606498/how-to-access-github-tag-message-in-github-actions
+
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get tag
+        run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
+        run: |
+          echo $TAG
+          echo ${{ env.TAG }}
