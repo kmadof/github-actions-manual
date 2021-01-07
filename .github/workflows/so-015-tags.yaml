@@ -17,4 +17,4 @@ jobs:
           echo ${{ env.TAG }}
       - name: Print message
         run: |
-          git show `git describe` --pretty=fuller
+          git tag -l --format='%(subject)' $TAG
