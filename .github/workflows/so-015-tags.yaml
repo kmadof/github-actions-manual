@@ -19,7 +19,7 @@ jobs:
           echo ${{ env.TAG }}
       - name: Print message
         run: |
-          git tag -l --format='%(subject)' $TAG
+          git tag -l --format='%(subject)' ${{ env.TAG }}
       - name: Print message
         run: |
           git tag -l --format='%(subject)'
