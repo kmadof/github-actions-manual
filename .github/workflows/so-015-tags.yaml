@@ -24,3 +24,6 @@ jobs:
         run: |
           git tag -l --format='%(subject)'
           git tag
+      - name: Print message
+        run: |
+          git tag -l --format='%(contents)' '${{ env.TAG }}'
