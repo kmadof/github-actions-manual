@@ -1,0 +1,20 @@
+#https://stackoverflow.com/questions/65609835/run-a-bash-script-located-in-public-folder-github-actions
+name: bash-script
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  
+  workflow_dispatch:
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: ./public/scripts/test.sh
+      shell: bash
+
