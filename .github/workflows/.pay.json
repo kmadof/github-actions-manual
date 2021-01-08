@@ -1,0 +1,22 @@
+{
+    "contributionIds": [
+        "ms.vss-build-web.run-artifacts-data-provider"
+    ],
+    "dataProviderContext": {
+        "properties": {
+            "artifactId": 1158,
+            "buildId": 7875,
+            "sourcePage": {
+                "url": "https://dev.azure.com/thecodemanual/DevOps%20Manual/_build/results?buildId=7875&view=artifacts&pathAsName=false&type=publishedArtifacts",
+                "routeId": "ms.vss-build-web.ci-results-hub-route",
+                "routeValues": {
+                    "project": "DevOps Manual",
+                    "viewname": "build-results",
+                    "controller": "ContributedPage",
+                    "action": "Execute",
+                    "serviceHost": "be1a2b52-5ed1-4713-8508-ed226307f634 (thecodemanual)"
+                }
+            }
+        }
+    }
+}
