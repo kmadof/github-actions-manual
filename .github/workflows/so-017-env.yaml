@@ -1,0 +1,14 @@
+name: env-example  
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: 
+      name: dev
+    steps:
+
+      # Checkout code
+    - uses: actions/checkout@main
