@@ -1,0 +1,20 @@
+name: Build and Deploy to dev site
+
+on:
+  push:
+    branches:
+      - beta
+  
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Archive build Artifact
+      uses: actions/upload-artifact@master
+      with:
+        path: build        
