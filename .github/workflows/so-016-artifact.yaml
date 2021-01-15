@@ -1,4 +1,4 @@
-name: Build and Deploy to dev site
+name: artifact
 
 on:
   push:

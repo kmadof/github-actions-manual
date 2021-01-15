@@ -1,0 +1,37 @@
+# https://stackoverflow.com/questions/65735099/github-workflow-job-not-executed-even-when-job-needs-successful
+name: Multiple jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job_1:
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo JOB1
+
+  job_2:
+    needs: job_1
+    if: false
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo JOB2; exit 1;
+
+  job_3:
+    needs: job_1
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo JOB3
+
+  job_4:
+    needs: [job_2, job_3]
+    if: always()
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo JOB4
+
+  job_5:
+    needs: job_4
+    runs-on: ubuntu-18.04
+    steps:
+        - run: echo JOB5
