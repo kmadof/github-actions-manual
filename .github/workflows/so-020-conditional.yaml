@@ -20,7 +20,7 @@ jobs:
 
   deploy-main:
     runs-on: ubuntu-latest
-    if: contains(github.ref, "main") 
+    if: github.ref == 'refs/heads/main'
     needs: [build, test]
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         
   deploy:
     runs-on: ubuntu-latest
-    if: not(contains(github.ref, "main"))
+    if: github.ref != 'refs/heads/main'
     needs: build
 
     steps:
