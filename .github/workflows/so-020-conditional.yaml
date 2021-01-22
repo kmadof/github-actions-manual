@@ -18,18 +18,10 @@ jobs:
     steps:
       - run: echo "build"
 
-  deploy-main:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    needs: [build, test]
-
-    steps:
-      - run: echo "deploy"
-        
   deploy:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
-    needs: build
+    needs: ${{ (contains(github.ref, "master") && [build, test]) || [build] }}
 
     steps:
       - run: echo "deploy"
