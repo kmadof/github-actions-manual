@@ -4,7 +4,10 @@ name: "Conditional dependency"
 
 on:
   workflow_dispatch:
-  
+
+env:
+  branch: ${{ github.ref }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +24,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
-    needs: ${{ (contains(github.ref, "master") && [build, test]) || [build] }}
+    needs: ${{ (contains(env.branch, "main") && [build, test]) || [build] }}
 
     steps:
       - run: echo "deploy"
