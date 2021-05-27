@@ -1,5 +1,5 @@
 #https://stackoverflow.com/questions/67717380/github-workflow-does-not-trigger-on-push-for-path-based-filtering
-name: Push to XYZ
+name: SO-0222 Push to XYZ
 
 on:
   push:
