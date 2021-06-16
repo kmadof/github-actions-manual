@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Create folder
         run: |
+          pwd
           ls
           mkdir myNewFolder
           ls
