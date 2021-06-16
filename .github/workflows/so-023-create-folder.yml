@@ -1,0 +1,18 @@
+#https://stackoverflow.com/questions/67996484/how-to-create-a-folder-in-github-workflow
+name: SO-023 Create folder
+
+on:
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create folder
+        run: |
+          ls
+          mkdir myNewFolder
