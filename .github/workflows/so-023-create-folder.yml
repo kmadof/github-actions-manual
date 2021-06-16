@@ -16,9 +16,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Create folder
         run: |
-          ls ../..
-          pwd
-          ls
           mkdir myNewFolder && cp -R dist myNewFolder
-          ls
+          ls myNewFolder
           
