@@ -19,6 +19,6 @@ jobs:
           ls ../..
           pwd
           ls
-          mkdir myNewFolder
+          mkdir myNewFolder && cp -R dist myNewFolder
           ls
           
