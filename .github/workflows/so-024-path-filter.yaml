@@ -3,7 +3,7 @@ name: SO-024 Push to XYZ
 
 on:
   push:
-    branches: [ main ]
+    #branches: [ main ]
     paths:
     - 'README.md'
 
