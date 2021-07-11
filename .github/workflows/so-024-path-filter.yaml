@@ -1,0 +1,18 @@
+#https://stackoverflow.com/questions/68335148/github-actions-runs-on-every-push-although-defined-to-run-on-specific-file-chang
+name: SO-024 Push to XYZ
+
+on:
+  push:
+    paths:
+    - 'README.md'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract commit
+        run: |
+          echo "Sending commit $GITHUB_SHA for $GITHUB_REPOSITORY"
