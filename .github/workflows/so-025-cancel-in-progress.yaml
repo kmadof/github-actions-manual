@@ -1,0 +1,25 @@
+#https://stackoverflow.com/questions/68754709/github-actions-push-several-times-but-i-want-the-build-to-be-done-only-for-the/68755931#68755931
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+      - production
+    paths-ignore:
+      - '**.md'
+
+
+# Ensures that only one deploy task per branch/environment will run at a time.
+concurrency:
+  group: environment-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract commit
+        run: |
+          echo "Sending commit $GITHUB_SHA for $GITHUB_REPOSITORY"
