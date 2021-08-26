@@ -26,6 +26,6 @@ jobs:
 
       - name: Test2
         run: |
-          for file in "${{ steps.test1.outputs.* }}"; do
+          for file in "${{ steps.test1.outputs.f-1 }}"; do
             echo "$file.. detected"
           done
