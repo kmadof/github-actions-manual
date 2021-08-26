@@ -32,6 +32,8 @@ jobs:
             h="${h} $g"
           done
 
+          echo "file: $h"
+
           echo "::set-output name=h::$g"
 
       - name: Test2
