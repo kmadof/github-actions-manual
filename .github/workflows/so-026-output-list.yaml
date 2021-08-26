@@ -1,0 +1,29 @@
+name: test-workflow
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Test1
+        id: test1
+        run: |
+          for f in $(ls $GITHUB_WORKSPACE/.github/workflows); do
+            echo "file: $f"
+            echo "::set-output name=f::$f"
+          done
+
+      - name: Test2
+        run: |
+          for file in "${{ steps.test1.outputs.f }}"; do
+            echo "$file detected"
+          done
