@@ -40,7 +40,6 @@ jobs:
             echo "$file.. detected"
           done
 
-          echo "${{ steps.test1.outputs.h }}"
           for file in ${{ steps.test1.outputs.h }}; do
             echo "$file.. detected"
           done
