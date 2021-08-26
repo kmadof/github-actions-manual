@@ -2,12 +2,13 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - main
-      - production
-    paths-ignore:
-      - '**.md'
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #     - production
+  #   paths-ignore:
+  #     - '**.md'
 
 
 # Ensures that only one deploy task per branch/environment will run at a time.
