@@ -17,13 +17,15 @@ jobs:
       - name: Test1
         id: test1
         run: |
+          i=0
           for f in $(ls $GITHUB_WORKSPACE/.github/workflows); do
+            i=$((i+1))
             echo "file: $f"
-            echo "::set-output name=f::$f"
+            echo "::set-output name=f-$i::$f"
           done
 
       - name: Test2
         run: |
-          for file in "${{ steps.test1.outputs }}"; do
-            echo "$file detected"
+          for file in "${{ steps.test1.outputs.* }}"; do
+            echo "$file.. detected"
           done
