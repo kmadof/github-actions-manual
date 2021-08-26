@@ -26,13 +26,20 @@ jobs:
 
           echo "::set-output name=counter::$i"
 
-      - name: Test2
-        run: |
-          for i in {1..${{ steps.test1.outputs.counter }}}
-          do
-            echo "${{ steps.test1.outputs.f-$i }}.. detected"
+          h=""
+          for g in $(ls $GITHUB_WORKSPACE/.github/workflows); do
+            echo "file: $g"
+            h="${h} $g"
           done
 
+          echo "::set-output name=h::$g"
+
+      - name: Test2
+        run: |
           for file in "${{ steps.test1.outputs.f-1 }}"; do
+            echo "$file.. detected"
+          done
+
+          for file in ${{ steps.test1.outputs.h }}; do
             echo "$file.. detected"
           done
