@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-1:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: test-fail
