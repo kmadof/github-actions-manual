@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - feature/test
+  workflow_dispatch:
 
 jobs:
   test-1:
