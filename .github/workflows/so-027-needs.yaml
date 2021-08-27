@@ -8,6 +8,11 @@ on:
 jobs:
   test-1:
     runs-on: ubuntu-latest
+    steps:
+      - name: test-fail
+        run: echo ${{ github.event.head_commit.message }}
+  test-1:
+    runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' && contains( github.event.head_commit.message, 'test1') }}
     steps:
       - name: test-fail
@@ -25,7 +30,8 @@ jobs:
     if: |
       always() &&
       (needs.test-1.result == 'success' || needs.test-1.result == 'skipped') &&
-      (needs.test-2.result == 'success' || needs.test-2.result == 'skipped')
+      (needs.test-2.result == 'success' || needs.test-2.result == 'skipped') && 
+      (needs.test-1.result != 'skipped' && needs.test-2.result != 'skipped')
     steps:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2.2.0
