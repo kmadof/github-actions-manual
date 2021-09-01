@@ -1,0 +1,40 @@
+name: 028-create-file
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Create and populate .Renviron file
+        env:
+          AWS_HOST: ${{ secrets.AWS_HOST }}
+          AWS_PORT: ${{ secrets.AWS_PORT }}
+          AWS_PW: ${{ secrets.AWS_PW }}
+          AWS_USER: ${{ secrets.AWS_USER }}
+          DBNAME: ${{ secrets.DBNAME }}
+        run: |
+          touch .Renviron
+          echo aws_host="$AWS_HOST" >> .Renviron
+          echo aws_port="$AWS_PORT" >> .Renviron
+          echo aws_pw="$AWS_PW" >> .Renviron
+          echo aws_user="$AWS_USER" >> .Renviron
+          echo dbname="$DBNAME" >> .Renviron
+
+          echo "cat .Renviron"
+          cat .Renviron
+
+          echo "ls ."
+          ls .
+
+          echo "ls ${{ github.workspace }}"
+          ls ${{ github.workspace }}
+        shell: bash
