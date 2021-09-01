@@ -32,9 +32,9 @@ jobs:
           echo "cat .Renviron"
           cat .Renviron
 
-          echo "ls ."
-          ls .
+          echo "ls -a ."
+          ls -a .
 
-          echo "ls ${{ github.workspace }}"
-          ls ${{ github.workspace }}
+          echo "ls -a ${{ github.workspace }}"
+          ls -a ${{ github.workspace }}
         shell: bash
