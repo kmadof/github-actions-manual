@@ -11,14 +11,21 @@ jobs:
   outputs:
     outputs1: ${{ steps.step1.outputs.test }}
     outputs2: ${{ steps.step2.outputs.test }}
+    outputs3: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
   steps:
   - id: step1
     run: echo "::set-output name=test::hello"
   - id: step2
     run: echo "::set-output name=test::world"
+  - name: Set selected color
+    run: echo '::set-output name=SELECTED_COLOR::green'
+    id: random-color-generator
+  - name: Get color
+    run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
 
  job2:
   runs-on: ubuntu-latest
   needs: job1
   steps:
   - run: echo ${{ needs.job1.outputs.output1 }} ${{ needs.job1.outputs.output2 }}
+  - run: echo ${{ needs.job1.outputs.output3 }}
