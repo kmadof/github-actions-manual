@@ -25,7 +25,9 @@ jobs:
       - name: Get color
         run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
       - id: step4
-        run: echo "::set-output name=test-four::world"
+        run: | 
+          echo "::add-mask::bryko"
+          echo "::set-output name=test-four::bryko"
   job2:
     runs-on: ubuntu-latest
     needs: job1
