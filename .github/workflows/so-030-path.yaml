@@ -12,8 +12,10 @@ jobs:
     - name: Remove sh.exe from PATH
       run: |
             echo "$PATH"
-            FOO=${PATH//C:\Program Files\Git\bin/}
-            FOO=${PATH//C:\Program Files\Git\usr\bin/}
+            PATH=${PATH//C:\Program Files\Git\bin/}
+            PATH=${PATH//C:\Program Files\Git\usr\bin/}
+            PATH=${PATH///c/Users/runneradmin/AppData/Local/Microsoft/WindowsApps/}
+            
             echo "$PATH"
             echo "$PATH" > $GITHUB_PATH
       shell: bash
