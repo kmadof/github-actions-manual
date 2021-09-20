@@ -1,0 +1,19 @@
+name: so-030-path
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: windows-latest
+    steps:
+    - name: Remove sh.exe from PATH
+      run: |
+            echo "$PATH"
+            FOO=${PATH//C:\Program Files\Git\bin/}
+            FOO=${PATH//C:\Program Files\Git\usr\bin/}
+            echo "$PATH"
+            echo "$PATH" > $GITHUB_PATH
+      shell: bash
