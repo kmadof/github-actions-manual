@@ -1,0 +1,15 @@
+on:
+  push:
+    paths:
+      - README.Rmd
+  schedule:
+  - cron: 0 */4 * * *
+
+name: Render README
+
+jobs:
+  render:
+    name: Render README
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
