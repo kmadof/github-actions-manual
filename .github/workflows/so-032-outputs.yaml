@@ -9,3 +9,9 @@ steps:
   id: random-color-generator
 - name: Get color
   run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+- name: Get color
+  run: echo "The selected color is ${{ steps.random-color-generator.outputs['SELECTED_COLOR'] }}"
+- name: Get color
+  run: echo "The selected color is ${{ steps.random-color-generator.outputs[env.x] }}"
+  env:
+    x: Mona
