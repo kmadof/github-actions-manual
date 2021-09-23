@@ -17,4 +17,4 @@ jobs:
     - name: Get color
       run: echo "The selected color is ${{ steps.random-color-generator.outputs[env.x] }}"
       env:
-        x: Mona
+        x: SELECTED_COLOR
