@@ -1,0 +1,26 @@
+name: so-033-output-cli
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Test1
+        id: test1
+        run: |
+          h=$(az --version)
+
+          echo "::set-output name=h::$h"
+
+      - name: Test2
+        run: |
+          echo "${{ steps.test1.outputs.h }}"
