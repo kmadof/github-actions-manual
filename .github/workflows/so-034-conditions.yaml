@@ -1,0 +1,33 @@
+name: so-034-conditions
+
+on:
+  push:
+    branches: [ master, main, qa ]
+  workflow_dispatch:
+
+jobs:
+  dev_build:
+    if: ${{ !(contains(github.base_ref, 'master') || contains(github.base_ref, 'main') || contains(github.head_ref, 'master') || contains(github.head_ref, 'main') || contains(github.base_ref, 'qa') || contains(github.head_ref, 'qa')) }}
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Test1
+        id: test1
+        run: |
+          
+          echo "${{ github.base_ref }}"
+   qa_build:
+    if: ${{ contains(github.base_ref, 'qa') || contains(github.head_ref, 'qa') }}
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Test1
+        id: test1
+        run: |
+          echo "${{ github.base_ref }}"
