@@ -3,6 +3,9 @@ name: so-034-conditions
 on:
   push:
     branches: [ master, main, qa ]
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
