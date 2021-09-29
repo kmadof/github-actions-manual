@@ -14,12 +14,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 2
-
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Test1
         id: test1
         run: |
-          
+          echo "Deploying $GITHUB_REF"
           echo "${{ github.base_ref }}"
+          echo "Deploying ${{ github.event_name }}"
   qa_build:
     runs-on: ubuntu-latest
     if: ${{ contains(github.base_ref, 'qa') || contains(github.head_ref, 'qa') }}
@@ -28,8 +32,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 2
-
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
       - name: Test1
         id: test1
         run: |
+          echo "Deploying $GITHUB_REF"
           echo "${{ github.base_ref }}"
+          echo "Deploying ${{ github.event_name }}"
