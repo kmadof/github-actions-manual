@@ -18,7 +18,8 @@ jobs:
         id: test1
         run: |
           
-          echo "${{ github.base_ref }}"
+          echo "Deploying $GITHUB_REF"
+          echo "Deploying ${{ github.event_name }}"
    qa_build:
     if: ${{ contains(github.base_ref, 'qa') || contains(github.head_ref, 'qa') }}
     steps:
@@ -31,3 +32,4 @@ jobs:
         id: test1
         run: |
           echo "${{ github.base_ref }}"
+          echo "Deploying ${{ github.event_name }}"
