@@ -24,7 +24,7 @@ jobs:
           
           echo "Deploying $GITHUB_REF"
           echo "Deploying ${{ github.event_name }}"
-   qa_build:
+  qa_build:
     runs-on: ubuntu-latest
     if: ${{ contains(github.base_ref, 'qa') || contains(github.head_ref, 'qa') }}
     steps:
