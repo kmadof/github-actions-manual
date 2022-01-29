@@ -1,0 +1,17 @@
+name: CI
+on: 
+  push:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v1
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'        
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/} ${GITHUB_REF}
