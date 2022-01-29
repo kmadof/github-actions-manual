@@ -1,3 +1,5 @@
+name: so-035-github-ref
+
 # https://stackoverflow.com/questions/70901255/using-env-variable-github-ref-name-doesnt-give-me-branch-name
 name: CI
 on: 
