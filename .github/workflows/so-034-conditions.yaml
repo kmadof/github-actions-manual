@@ -3,6 +3,9 @@ name: so-034-conditions
 on:
   push:
     branches: [ master, main, qa ]
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -35,6 +38,7 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Test1
         id: test1
         run: |
