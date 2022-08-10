@@ -17,14 +17,13 @@ on:
           - prod
         default: 'dev'
 env:
-  Dev:
-    AWS_REGION: "us-east-1"
+    AWS_REGION: ${{ fromJSON('{"dev": "us-east-1", "qa": ""us-east-1""}')[github.event.inputs.ENVIRONMENT]  }}
     STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
     SYSTEM: "ADIOSAPP"
-  QA:
-    AWS_REGION: "us-east-1"
-    STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
-    SYSTEM: "ADIOSAPP"
+  # QA:
+  #   AWS_REGION: "us-east-1"
+  #   STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
+  #   SYSTEM: "ADIOSAPP"
 
 jobs:
   build:
