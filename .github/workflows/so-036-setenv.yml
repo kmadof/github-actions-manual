@@ -17,14 +17,9 @@ on:
           - prod
         default: 'dev'
 env:
-    #AWS_REGION: ${{ fromJSON('{"dev": "us-east-1", "qa": ""us-east-1""}')[github.event.inputs.ENVIRONMENT]  }}
-    AWS_REGION: ${{ fromJSON('{"Linux":"so","macOS":"dylib","dev":"dll"}')[github.event.inputs.ENVIRONMENT] }}
+    AWS_REGION: ${{ fromJSON('{"dev":"us-east-1","qa":"us-east-1"}')[github.event.inputs.ENVIRONMENT] }}
     STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
-    SYSTEM: "ADIOSAPP"
-  # QA:
-  #   AWS_REGION: "us-east-1"
-  #   STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
-  #   SYSTEM: "ADIOSAPP"
+    SYSTEM: ${{ fromJSON('{"dev":"ADIOSAPP","qa":"ADIOSAPP"}')[github.event.inputs.ENVIRONMENT] }}
 
 jobs:
   build:
@@ -35,4 +30,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Print env
-        run: echo "${{ env.AWS_REGION }}""
+        run: echo "${{ env.AWS_REGION }}"
