@@ -1,0 +1,38 @@
+name: so-036-setenv
+
+#https://stackoverflow.com/questions/73298149/how-to-pass-custom-environment-variables-related-to-specific-environment-in-gith
+
+on:
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT:
+        type: choice
+        description: 'Select the Environment to deploy'
+        required: true
+        options:
+          - dev
+          - qa
+          - uat
+          - load
+          - prod
+        default: 'dev'
+env:
+  Dev:
+    AWS_REGION: "us-east-1"
+    STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
+    SYSTEM: "ADIOSAPP"
+  QA:
+    AWS_REGION: "us-east-1"
+    STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
+    SYSTEM: "ADIOSAPP"
+
+jobs:
+  build:
+    name: "Deploying ${{ github.ref_name }} branch to ${{ github.event.inputs.ENVIRONMENT }} environment"
+    runs-on: ubuntu-latest
+    #environment: ${{ github.event.inputs.ENVIRONMENT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Print env
+        run: echo "${{ env.AWS_REGION }}""
