@@ -1,8 +1,8 @@
 name: so-034-conditions
 
 on:
-  push:
-    branches: [ master, main, qa ]
+  # push:
+  #   branches: [ master, main, qa ]
   workflow_dispatch:
 
 jobs:

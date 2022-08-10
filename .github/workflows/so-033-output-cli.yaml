@@ -1,8 +1,8 @@
 name: so-033-output-cli
 
 on:
-  push:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
   workflow_dispatch:
 
 jobs:

@@ -1,8 +1,8 @@
 name: so-030-path
 
 on:
-  push:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
   workflow_dispatch:
 
 jobs:

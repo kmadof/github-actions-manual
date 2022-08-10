@@ -1,8 +1,8 @@
 name: 028-create-file
 
 on:
-  push:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
   workflow_dispatch:
 
 jobs:

@@ -1,6 +1,7 @@
 #https://stackoverflow.com/questions/65606498/how-to-access-github-tag-message-in-github-actions
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'

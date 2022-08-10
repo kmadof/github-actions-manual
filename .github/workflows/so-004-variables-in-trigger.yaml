@@ -2,10 +2,11 @@ env:
   default-branch: 'main'
 
 on:
-  push:
-    branches:
-      - ${{env.default-branch}}
-      - main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - ${{env.default-branch}}
+  #     - main
 
 jobs:
   check-branch:
