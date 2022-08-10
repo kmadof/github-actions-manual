@@ -1,8 +1,8 @@
 name: MSBuild and MSTest CI
 
 on:
-  push:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
   pull_request:
     branches: [ main ]
 

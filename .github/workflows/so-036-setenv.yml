@@ -17,7 +17,8 @@ on:
           - prod
         default: 'dev'
 env:
-    AWS_REGION: ${{ fromJSON('{"dev": "us-east-1", "qa": ""us-east-1""}')[github.event.inputs.ENVIRONMENT]  }}
+    #AWS_REGION: ${{ fromJSON('{"dev": "us-east-1", "qa": ""us-east-1""}')[github.event.inputs.ENVIRONMENT]  }}
+    AWS_REGION: ${{ romJSON('{"Linux":"so","macOS":"dylib","Windows":"dll"}')[runner.os] }}
     STAGE: "${{ github.event.inputs.ENVIRONMENT }}"
     SYSTEM: "ADIOSAPP"
   # QA:
