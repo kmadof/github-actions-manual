@@ -1,0 +1,43 @@
+name: so-037-create-file
+
+#https://stackoverflow.com/questions/73465583/github-actio-to-create-a-html-file-in-the-main-branch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Overwrite file
+        uses: "DamianReeves/write-file-action@master"
+        with:
+          path: src/dummy.html
+          write-mode: preserve 
+          contents: |
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="styles.css">
+                <title>Vanilla JavaScript App</title>
+            </head>
+            <body>
+                <main>
+                <h1>Customer Approval Page</h1>
+                <h2> <customer name> </h2>
+                </main>
+            </body>
+            </html>     
+            
+      - name: Commit & Push
+        uses: Andro999b/push@v1.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          force: true
+          message: 'Overwritten by Github Actions - ${date}'
