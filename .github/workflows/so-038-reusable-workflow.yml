@@ -1,0 +1,22 @@
+name: so-038-reusable-workflow
+
+#https://stackoverflow.com/questions/73560884/matrix-value-not-being-interpreted-in-uses-within-a-caller-yaml
+
+#name: Reusable workflow with matrix strategy
+
+on:
+  push:
+
+jobs:
+  ReuseableMatrixJobForDeployment:
+    strategy:
+      matrix:
+        target: [dev, stage]
+    if: ${{ matrix.workflow == 'dev' }}
+    uses: kmadof/github-actions-manual/.github/workflows/dev.yml@main
+    with:
+      target: ${{ matrix.target }}
+    if: ${{ matrix.workflow == 'stage' }}
+    uses: kmadof/github-actions-manual/.github/workflows/stage.yml@main
+    with:
+      target: ${{ matrix.target }}
