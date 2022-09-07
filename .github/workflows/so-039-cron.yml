@@ -1,0 +1,28 @@
+name: so-039-cron
+
+#https://stackoverflow.com/questions/73635200/default-input-is-empty-when-github-action-crop-is-execute/73635310?noredirect=1#comment130031802_73635310
+
+workflow_dispatch:
+    inputs:
+      typeOfTesting:
+        type: choice
+        description: Select Type of Test
+        default: "stage-test"
+        required: true
+        options:
+          - stage-test-local-All
+          - stage-test
+          - stage-test-Uptime
+
+  schedule:
+    - cron: "*/5 * * * *"
+    - cron: "0 1 * * *"
+    - cron: "0 11 * * *"
+
+jobs:
+  WebdriverIO-Automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Selection of Testing type
+        run: |
+          echo "Branch Name: ${{ github.event.inputs.typeOfTesting == '' && github.event.inputs.typeOfTesting  || 'stage-test' }}"
