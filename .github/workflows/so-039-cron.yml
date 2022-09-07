@@ -19,6 +19,7 @@ on:
     - cron: "*/5 * * * *"
     - cron: "0 1 * * *"
     - cron: "0 11 * * *"
+    - cron: */5 * * * *
 
 jobs:
   WebdriverIO-Automation:
