@@ -2,8 +2,8 @@ on:
   push:
     paths:
       - README.Rmd
-  schedule:
-  - cron: 0 */4 * * *
+  # schedule:
+  # - cron: 0 */4 * * *
 
 name: Render README
 
