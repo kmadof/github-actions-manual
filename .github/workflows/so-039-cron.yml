@@ -2,7 +2,8 @@ name: so-039-cron
 
 #https://stackoverflow.com/questions/73635200/default-input-is-empty-when-github-action-crop-is-execute/73635310?noredirect=1#comment130031802_73635310
 
-workflow_dispatch:
+on: 
+  workflow_dispatch:
     inputs:
       typeOfTesting:
         type: choice
