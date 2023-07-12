@@ -1,0 +1,21 @@
+name: so-036-semver
+
+# https://stackoverflow.com/questions/73267228/let-a-net-docker-image-know-its-version-using-docker-build-push-action
+on: 
+  push:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: install minver-cli
+      run: dotnet tool install --global minver-cli
+
+    - name: get version
+      run: echo "MINVERBUILDMETADATA=$(minver --tag-prefix v --verbosity e)" >> $GITHUB_ENV 
+
+    - name: echo environementvariable
+      run: echo ${{ env.MINVERBUILDMETADATA }}
