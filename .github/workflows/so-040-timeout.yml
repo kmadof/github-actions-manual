@@ -16,6 +16,7 @@ jobs:
 
   cancel:
     if: ${{ cancelled() }}
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: cancel
