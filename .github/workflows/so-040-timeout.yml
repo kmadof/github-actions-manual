@@ -15,8 +15,8 @@ jobs:
           while true; do echo 1; sleep 1; done
 
   cancel:
-    #if: ${{ contains(needs.*.result, 'failure') }}
-    if: ${{ always() }}
+    if: ${{ needs.build.result == 'failure' }}
+    #if: ${{ always() }}
     needs: build
     runs-on: ubuntu-latest
     steps:
