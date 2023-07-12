@@ -16,19 +16,19 @@ jobs:
         run: |
           while true; do echo 1; sleep 1; done
 
+  # cancel:
+  #   if: ${{ needs.build.result == 'failure' }}
+  #   #if: ${{ always() }}
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: cancel
+  #       run: |
+  #         echo "cancel"
+  #         echo "${{ needs.build.result }}"
+
+
   cancel:
-    if: ${{ needs.build.result == 'failure' }}
-    #if: ${{ always() }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: cancel
-        run: |
-          echo "cancel"
-          echo "${{ needs.build.result }}"
-
-
-  cancel_other:
     if: ${{ failure() }}
     needs: build
     runs-on: ubuntu-latest
