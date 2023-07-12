@@ -1,4 +1,4 @@
-name: test
+name: so-040-timeout
 
 on:
   workflow_dispatch:
