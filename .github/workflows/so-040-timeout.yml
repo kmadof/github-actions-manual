@@ -1,0 +1,23 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  build:
+    timeout-minutes: 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          while true; do echo 1; sleep 1; done
+
+  cancel:
+    if: ${{ cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: cancel
+        run: |
+          echo "cancel"
