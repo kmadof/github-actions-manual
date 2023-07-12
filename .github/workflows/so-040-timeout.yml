@@ -15,7 +15,7 @@ jobs:
           while true; do echo 1; sleep 1; done
 
   cancel:
-    if: ${{ cancelled() }}
+    if: ${{ contains(needs.*.result, 'failure') }}
     needs: build
     runs-on: ubuntu-latest
     steps:
