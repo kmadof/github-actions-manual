@@ -4,7 +4,15 @@ on:
   workflow_dispatch:
 
 jobs:
+
+  docker:
+    uses: kmadof/github-actions-manual/.github/workflows/so-041-reusable-workflow.yaml@main
+    with:
+      image_name: my-awesome-app
+      tag: $GITHUB_RUN_NUMBER
+
   do-it:
+    needs: docker
     runs-on: ubuntu-latest
 
     steps:
@@ -12,9 +20,3 @@ jobs:
 
       - name: Run a one-line script
         run: echo Hello, world!
-
-  docker:
-    uses: kmadof/github-actions-manual/.github/workflows/so-041-reusable-workflow.yaml@main
-    with:
-      image_name: my-awesome-app
-      tag: $GITHUB_RUN_NUMBER
