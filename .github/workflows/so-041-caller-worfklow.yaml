@@ -24,4 +24,4 @@ jobs:
         run: |
             echo Hello, world!
             echo ${{ needs.docker.result }}
-            echo $${ github.event.event_type == 'push' && needs.docker.result == 'skipped' }
+            echo ${{ github.event.event_type == 'push' && needs.docker.result == 'skipped' }}
