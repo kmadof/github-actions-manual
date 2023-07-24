@@ -14,7 +14,7 @@ jobs:
         run: echo Hello, world!
 
   docker:
-    uses: kmadof/github-actions-manual/.github/workflows/so-041-reusable-workflow.yaml§@main
+    uses: kmadof/github-actions-manual/.github/workflows/so-041-reusable-workflow.yaml@main
     with:
       image_name: my-awesome-app
       tag: $GITHUB_RUN_NUMBER
