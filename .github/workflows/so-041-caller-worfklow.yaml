@@ -2,6 +2,7 @@ name: Reusable Workflow user
 # https://stackoverflow.com/questions/76758012/call-reusable-workflow-conditionally-from-a-job 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
 
