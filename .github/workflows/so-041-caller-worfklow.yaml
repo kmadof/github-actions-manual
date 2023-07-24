@@ -6,6 +6,7 @@ on:
 jobs:
 
   docker:
+    if: github.event.event_type != 'push'
     uses: kmadof/github-actions-manual/.github/workflows/so-041-reusable-workflow.yaml@main
     with:
       image_name: my-awesome-app
