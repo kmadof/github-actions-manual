@@ -14,7 +14,7 @@ jobs:
 
   do-it:
     needs: docker
-    if: (github.event.event_type == 'push' && needs.docker.result == 'skipped') || success()
+    if: (github.event.event_type == 'push' && needs.docker.result == 'skipped') || success() || always()
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,4 @@ jobs:
         run: |
             echo Hello, world!
             echo ${{ needs.docker.result }}
+            echo $${ github.event.event_type == 'push' && needs.docker.result == 'skipped' }
