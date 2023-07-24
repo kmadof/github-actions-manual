@@ -7,7 +7,7 @@ on:
 jobs:
 
   docker:
-    if: github.event.event_type == 'push'
+    if: github.event_name == 'push'
     uses: kmadof/github-actions-manual/.github/workflows/so-041-reusable-workflow.yaml@main
     with:
       image_name: my-awesome-app
@@ -15,7 +15,7 @@ jobs:
 
   do-it:
     needs: docker
-    if: (github.event.event_type != 'push' && needs.docker.result == 'skipped') || success()
+    if: (github.event_name != 'push' && needs.docker.result == 'skipped') || success()
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +25,5 @@ jobs:
         run: |
             echo Hello, world!
             echo ${{ needs.docker.result }}
-            echo ${{ github.event.event_type }}
-            echo ${{ github.event.event_type != 'push' && needs.docker.result == 'skipped' }}
+            echo ${{ github.event_name }}
+            echo ${{ github.event_name != 'push' && needs.docker.result == 'skipped' }}
