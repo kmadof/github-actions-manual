@@ -2,7 +2,7 @@ name: so-036-semver
 
 # https://stackoverflow.com/questions/73267228/let-a-net-docker-image-know-its-version-using-docker-build-push-action
 on: 
-  push:
+  # push:
   workflow_dispatch:
   pull_request:
     types: [opened, reopened]

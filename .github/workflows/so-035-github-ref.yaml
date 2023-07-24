@@ -2,7 +2,7 @@ name: so-035-github-ref
 
 # https://stackoverflow.com/questions/70901255/using-env-variable-github-ref-name-doesnt-give-me-branch-name
 on: 
-  push:
+  # push:
   workflow_dispatch:
   pull_request:
     types: [opened, reopened]
