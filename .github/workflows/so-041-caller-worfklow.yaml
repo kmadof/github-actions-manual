@@ -1,0 +1,20 @@
+name: Reusable Workflow user
+# https://stackoverflow.com/questions/76758012/call-reusable-workflow-conditionally-from-a-job 
+on:
+  workflow_dispatch:
+
+jobs:
+  do-it:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+  docker:
+    uses: kmadof/github-actions-manual/.github/workflows/so-041-reusable-workflow.yaml§@main
+    with:
+      image_name: my-awesome-app
+      tag: $GITHUB_RUN_NUMBER
