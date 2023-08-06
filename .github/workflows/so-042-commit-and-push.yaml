@@ -1,4 +1,7 @@
-on: workflow_dispatch
+name: Commit and push
+
+on: 
+    workflow_dispatch
 
 permissions:
     contents: write
