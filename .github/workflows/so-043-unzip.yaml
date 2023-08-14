@@ -29,7 +29,7 @@ jobs:
               uses: actions/download-artifact@v2
               with:
                 name: release_artifacts
-                path: ${{ github.workspace }}/release_artifacts.zip
+                path: ${{ github.workspace }}/release_artifacts
 
             - name: Extract artifacts for release upload
               run: |
