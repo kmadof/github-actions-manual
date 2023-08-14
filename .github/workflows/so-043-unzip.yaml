@@ -1,0 +1,38 @@
+name: Unzip
+#https://stackoverflow.com/questions/76895703/how-to-automate-release-drafting-from-archive-uploaded-by-the-actions-upload-ar
+
+on: 
+    workflow_dispatch
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+          
+      - name: action-zip
+        uses: montudor/action-zip@v1.0.0
+        with:
+          args: zip -qq -r azfunc-repository-stats.zip .
+  
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: release_artifacts
+          path: ${{ github.workspace }}/azfunc-repository-stats.zip
+  
+    publish:
+        runs-on: ubuntu-20.04
+        needs: build
+        steps:
+            - name: Download artifact
+              uses: actions/download-artifact@v2
+              with:
+                name: release_artifacts
+                path: ${{ github.workspace }}/release_artifacts.zip
+
+            - name: Extract artifacts for release upload
+              run: |
+                    mkdir ${{ github.workspace }}/pkg
+                    ls ${{ github.workspace }}
+                    unzip ${{ github.workspace }}/release_artifacts.zip -d ${{ github.workspace }}/pkg/
