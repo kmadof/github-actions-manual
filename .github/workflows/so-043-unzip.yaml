@@ -34,5 +34,5 @@ jobs:
             - name: Extract artifacts for release upload
               run: |
                     mkdir ${{ github.workspace }}/pkg
-                    ls ${{ github.workspace }}
+                    ls ${{ github.workspace }} -l
                     unzip ${{ github.workspace }}/release_artifacts.zip -d ${{ github.workspace }}/pkg/
