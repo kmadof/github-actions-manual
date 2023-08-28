@@ -21,6 +21,7 @@ jobs:
             pwd
             echo "LS"
             ls .
+            cat so-044.json
             min_req=$(cat so-044.json)
             echo '$min_req'
             echo 'test=$min_req' >> "$GITHUB_OUTPUT"
