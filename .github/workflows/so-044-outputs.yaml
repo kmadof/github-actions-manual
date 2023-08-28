@@ -16,6 +16,8 @@ jobs:
           run: echo "test=hello" >> "$GITHUB_OUTPUT"
         - id: step2
           run: |
+            pwd
+            ls
             min_req=$(cat so-044.json)
             echo "test=$min_req" >> "$GITHUB_OUTPUT"
     job2:
