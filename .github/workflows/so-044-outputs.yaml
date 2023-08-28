@@ -10,7 +10,7 @@ jobs:
       # Map a step output to a job output
       outputs:
         output1: ${{ steps.step1.outputs.test }}
-        output2: ${{ steps.step2.outputs.test }}
+        output2: ${{ fromJson(steps.step2.outputs.test) }}
       steps:
         - uses: actions/checkout@v3
           with:
