@@ -13,8 +13,6 @@ jobs:
         output2: ${{ fromJson(steps.step2.outputs.test) }}
       steps:
         - uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
         - id: step1
           run: echo "test=hello" >> "$GITHUB_OUTPUT"
         - id: step2
@@ -24,7 +22,7 @@ jobs:
             echo "LS"
             ls .
             min_req=$(cat so-044.json)
-            echo "test=$min_req" >> "$GITHUB_OUTPUT"
+            echo "test=${min_req}" >> "$GITHUB_OUTPUT"
     job2:
       runs-on: ubuntu-latest
       needs: job1
