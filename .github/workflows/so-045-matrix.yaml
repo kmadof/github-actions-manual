@@ -13,9 +13,8 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       # output what you want, the output of package B will be available in needs for furture jobs
-      - run: echo "MyKey=MyOutput" > $GITHUB_OUTPUT
+      - run: echo "MyKey=${{ matrix.package }}" > $GITHUB_OUTPUT
         id: mystep
-        if: matrix.package == 'B' 
       outputs:
         B: ${{ steps.mystep.outputs.mykey || '' }}
     testb:
