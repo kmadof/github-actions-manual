@@ -1,5 +1,5 @@
 name: SO 45 Matrix
-# https://stackoverflow.com/questions/76992915/github-action-take-vaule-from-json-file-into-github-output
+# https://stackoverflow.com/questions/77002736/extract-matrix-step-output-for-each-element-in-a-github-reusable-workflow
 
 on: 
     workflow_dispatch
