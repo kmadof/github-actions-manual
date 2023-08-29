@@ -15,6 +15,8 @@ jobs:
       # output what you want, the output of package B will be available in needs for furture jobs
       - run: echo "MyKey=${{ matrix.package }}" > $GITHUB_OUTPUT
         id: mystep
+      - id: list_dirs
+        run: echo "::set-output name=matrix::${{ matrix.package }}"
       outputs:
         B: ${{ steps.mystep.outputs.mykey || '' }}
     testb:
