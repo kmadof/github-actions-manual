@@ -1,0 +1,26 @@
+name: SO 45 Matrix
+# https://stackoverflow.com/questions/76992915/github-action-take-vaule-from-json-file-into-github-output
+
+on: 
+    workflow_dispatch
+
+
+jobs:
+    testa:
+      strategy:
+        matrix:
+          package: ${{ fromJSON('["A", "B", "C"]') }}
+      runs-on: ubuntu-latest
+      steps:
+      # output what you want, the output of package B will be available in needs for furture jobs
+      - run: echo "MyKey=MyOutput" > $GITHUB_OUTPUT
+        id: mystep
+        if: matrix.package == 'B' 
+      outputs:
+        B: ${{ steps.mystep.outputs.mykey || '' }}
+    testb:
+      runs-on: ubuntu-latest
+      needs: testa
+      steps:
+      - run: ${{ tojson(needs) }}
+        shell: cat {0}
