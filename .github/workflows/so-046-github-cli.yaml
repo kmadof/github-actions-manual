@@ -6,10 +6,12 @@ on:
 
 jobs:
   comment:
-    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: gh variable list
+      - run: |
+            gh variable list
+            gh variable set TEST_VAR --body "Set from workflow"
+            gh variable list
         env:
           GITHUB_TOKEN: ${{ secrets.FULL_PAT }}
