@@ -1,0 +1,13 @@
+name: SO 46 Github CLI
+# https://stackoverflow.com/questions/77002009/how-can-i-replace-a-globally-defined-repository-variable-in-github-from-within-a
+
+on: 
+    workflow_dispatch
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh variable list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
