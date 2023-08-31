@@ -19,7 +19,9 @@ jobs:
         shell: bash
         run: |
             env | grep "GITHUB_RETENTION_DAYS"
-            result2=`ls -al | grep "100"`
+            ls -al
+            result2="$(ls -al | grep "100")"
+            echo "$result2"
             echo $result2
             result=`cat README.md | grep "test"`
             echo $result
