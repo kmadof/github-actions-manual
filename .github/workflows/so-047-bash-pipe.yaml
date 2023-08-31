@@ -19,5 +19,7 @@ jobs:
         shell: bash
         run: |
             ls .
+            echo "check script"
             cat /home/runner/work/_temp/*.sh
+
             `cat README.md | grep "test"`
