@@ -18,4 +18,8 @@ jobs:
       - name: just use a pipe
         shell: bash
         run: |
+            env
             result2=`ls -al | grep "100"`
+            echo $result2
+            result=`cat README.md | grep "test"`
+            echo $result
