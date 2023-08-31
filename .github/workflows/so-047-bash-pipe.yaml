@@ -1,0 +1,15 @@
+name: SO 47 pipe
+# https://stackoverflow.com/questions/77017574/pipes-not-working-in-shell-steps-of-github-actions
+
+on: 
+    workflow_dispatch
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: just use a pipe
+        shell: bash
+        run: |
+          ls -al | grep 100
