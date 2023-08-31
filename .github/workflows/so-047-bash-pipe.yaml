@@ -25,3 +25,8 @@ jobs:
             echo $result2
             result=`cat README.md | grep "test"`
             echo $result
+
+      - name: just use a pipe
+        shell: bash
+        run: |
+            ls -al | grep git
