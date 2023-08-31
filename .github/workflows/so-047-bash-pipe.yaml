@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: /bin/bash -c "ls -al | grep 100"
       - name: just use a pipe
         shell: bash
         run: |
