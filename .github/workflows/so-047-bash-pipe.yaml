@@ -19,4 +19,5 @@ jobs:
         shell: bash
         run: |
             ls .
+            cat /home/runner/work/_temp/*.sh
             `cat README.md | grep "test"`
