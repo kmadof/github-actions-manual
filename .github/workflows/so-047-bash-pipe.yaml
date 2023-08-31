@@ -19,6 +19,3 @@ jobs:
         shell: bash
         run: |
             result2=`ls -al | grep 100`
-            echo $result2
-            result=`cat README.md | grep "test"`
-            echo $result
