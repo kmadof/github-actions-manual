@@ -12,4 +12,5 @@ jobs:
       - name: just use a pipe
         shell: bash
         run: |
-            `cat LICENCE | grep "MIT"`
+            ls .
+            `cat README.md | grep "test"`
