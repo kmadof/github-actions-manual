@@ -13,6 +13,7 @@ jobs:
         run: |
             echo "cancel"
             cat README.md
+            ls /home/runner/work/_temp/
       - name: just use a pipe
         shell: bash
         run: |
