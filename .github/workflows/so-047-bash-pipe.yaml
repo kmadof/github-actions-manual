@@ -18,4 +18,4 @@ jobs:
       - name: just use a pipe
         shell: bash
         run: |
-            result2=`ls -al | grep 100`
+            result2=`ls -al | grep "100"`
