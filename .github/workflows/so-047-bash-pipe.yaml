@@ -12,5 +12,4 @@ jobs:
       - name: just use a pipe
         shell: bash
         run: |
-            `ls -al | grep 100`
             `cat LICENCE | grep "MIT"`
