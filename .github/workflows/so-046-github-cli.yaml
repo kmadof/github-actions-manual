@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
             gh variable list
-            gh variable set TEST_VAR --body "Set from workflow"
+            gh variable set TEST_VAR --body "Set from workflow again"
             gh variable list
         env:
           GITHUB_TOKEN: ${{ secrets.FULL_PAT }}
