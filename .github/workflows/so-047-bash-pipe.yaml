@@ -22,4 +22,4 @@ jobs:
             echo "check script"
             cat /home/runner/work/_temp/*.sh
 
-            `cat README.md | grep "test"`
+            result=`cat README.md | grep "test"`
