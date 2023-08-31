@@ -30,3 +30,9 @@ jobs:
         shell: bash
         run: |
             ls -al | grep git
+
+      - name: just use a pipe
+        shell: bash
+        run: |
+            result2="$(ls -al 2>&1 | grep 100)"
+            echo "$result2"
