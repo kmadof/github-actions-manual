@@ -18,8 +18,7 @@ jobs:
       - name: just use a pipe
         shell: bash
         run: |
-            ls .
-            echo "check script"
-            cat /home/runner/work/_temp/*.sh
-
+            result2=`ls -al | grep 100`
+            echo $result2
             result=`cat README.md | grep "test"`
+            echo $result
