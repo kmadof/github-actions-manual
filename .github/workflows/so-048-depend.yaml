@@ -13,4 +13,4 @@ jobs:
 
     steps:
       - name: context limit
-        run: echo  "${{ github.event.inputs.limit }}"
+        run: echo  "${{ toJson(github.event) }}"
