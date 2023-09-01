@@ -1,0 +1,16 @@
+name: depend
+
+on:
+  workflow_run:
+    workflows: ["trigger"]
+    types:
+      - completed
+
+jobs:
+  test:
+    name: test-on-dependent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: context limit
+        run: echo  "${{ github.event }}"
