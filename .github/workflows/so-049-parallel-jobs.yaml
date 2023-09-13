@@ -17,6 +17,7 @@ jobs:
           echo "${{ runner.os }}"
 
   jobWindows:
+    needs: []
     runs-on: "windows-latest"   
     steps:
       - run: |
