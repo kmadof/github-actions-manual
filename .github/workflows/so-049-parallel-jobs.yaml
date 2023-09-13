@@ -1,0 +1,23 @@
+name: Parallel jobs
+
+#https://stackoverflow.com/questions/77084168/how-to-specify-container-section-only-for-linux-runner-in-github-actions
+
+on:
+    workflow_dispatch:
+      inputs:
+        limit:
+          type: number
+          required: true
+
+jobs:
+  jobLinux:
+    runs-on: "ubuntu-latest"
+    steps:
+      - run: |
+          echo "${{ runner.os }}"
+
+  jobWindows:
+    runs-on: "windows-latest"   
+    steps:
+      - run: |
+          echo "${{ runner.os }}"
