@@ -1,0 +1,30 @@
+name: Parallel jobs
+
+#https://stackoverflow.com/questions/77181212/use-composite-action-output-as-step-output
+
+on:
+    workflow_dispatch:
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    outputs:
+        foo: ${{ steps.foo.outputs.random-number }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: kmadof/hello-world-composite-action-output@main
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
+      - run: echo random-number ${{ steps.foo.outputs.random-number-bash }}
+        shell: bash
+  job2:
+    runs-on: ubuntu-latest
+    needs: hello_world_job
+    steps:
+        - env:
+            OUTPUT1: ${{needs.hello_world_job.outputs.foo}}
+        run: echo "$OUTPUT1"
