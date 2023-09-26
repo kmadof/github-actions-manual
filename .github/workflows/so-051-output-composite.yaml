@@ -25,6 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: hello_world_job
     steps:
-        - env:
-            OUTPUT1: ${{needs.hello_world_job.outputs.foo}}
+      - env:
+           OUTPUT1: ${{needs.hello_world_job.outputs.foo}}
         run: echo "$OUTPUT1"
