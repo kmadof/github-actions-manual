@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: affected-apps
     outputs:
-        apps: ${{ steps.step1.outputs.filtered}}
+        apps: ${{ toJson(steps.step1.outputs.filtered) }}
     steps:
       - id: step1
         run: | 
