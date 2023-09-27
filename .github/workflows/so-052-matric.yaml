@@ -33,7 +33,7 @@ jobs:
       - id: step1
         run: | 
             echo "$APPS"
-            RESULT=$(echo '$APPS' | jq --argjson toRemove '["app1", "app2"]' 'map(select(. as $v | $toRemove | index($v) | not))')
+            RESULT=$(echo $APPS | jq --argjson toRemove '["app1", "app2"]' 'map(select(. as $v | $toRemove | index($v) | not))')
             echo "$RESULT"
             echo "filtered=$RESULT" >> "$GITHUB_OUTPUT"
         env:
