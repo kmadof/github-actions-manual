@@ -1,4 +1,4 @@
-name: Conditional matric
+name: Conditional matrix
 
 #https://stackoverflow.com/questions/77186893/how-can-i-skip-the-whole-job-for-a-matrix-match-in-github-action
 
@@ -24,3 +24,13 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
       - run: echo "${{ matrix.app }}"
+  filter_matrix:
+    runs-on: ubuntu-latest
+    needs: affected-apps
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.affected-apps.outputs.apps) }}
+    steps:
+      - run: echo "$APPS"
+        env:
+         APPS: ${{ needs.affected-apps.outputs.apps }}
