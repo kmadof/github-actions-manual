@@ -1,0 +1,26 @@
+name: Conditional matric
+
+#https://stackoverflow.com/questions/77186893/how-can-i-skip-the-whole-job-for-a-matrix-match-in-github-action
+
+on:
+    workflow_dispatch:
+
+jobs:
+  affected-apps:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    outputs:
+        apps: ${{ steps.step1.outputs.test}}
+    steps:
+      - uses: actions/checkout@v3
+      - id: step1
+        run: echo "test=['app1','app2', 'app3']" >> "$GITHUB_OUTPUT"
+  example_matrix:
+    runs-on: ubuntu-latest
+    needs: affected-apps
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.affected-apps.outputs.apps) }}
+    steps:
+      - uses: actions/setup-node@v3
+      - run: echo "${{ matrix.app }}"
