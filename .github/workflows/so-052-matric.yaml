@@ -27,10 +27,23 @@ jobs:
   filter_matrix:
     runs-on: ubuntu-latest
     needs: affected-apps
-    strategy:
-      matrix:
-        app: ${{ fromJson(needs.affected-apps.outputs.apps) }}
+    outputs:
+        apps: ${{ steps.step1.outputs.filtered}}
     steps:
-      - run: echo "$APPS"
+      - id: step1
+        run: | 
+            echo "$APPS"
+            RESULT=$(echo '$APPS' | jq --argjson toRemove '["app1", "app2"]' 'map(select(. as $v | $toRemove | index($v) | not))')
+            echo "$RESULT"
+            echo "filtered=$RESULT" >> "$GITHUB_OUTPUT"
         env:
          APPS: ${{ needs.affected-apps.outputs.apps }}
+  filtered_matrix:
+    runs-on: ubuntu-latest
+    needs: filter_matrix
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.filter_matrix.outputs.apps) }}
+    steps:
+      - uses: actions/setup-node@v3
+      - run: echo "${{ matrix.app }}"
