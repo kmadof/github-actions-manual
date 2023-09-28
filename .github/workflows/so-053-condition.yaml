@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 
 # https://stackoverflow.com/questions/77191091/why-does-this-job-run-on-github-regardless-of-my-conditional
+#if: ${{ github.head_ref || github.ref_name }} == 'cat1' || startsWith(${{ github.head_ref || github.ref_name }}, 'cat2')
 
 concurrency:
   group: ${{ github.ref }}
@@ -13,7 +14,7 @@ env:
   
 jobs:
   cat:
-    if: ${{ github.head_ref || github.ref_name }} == 'cat1' || startsWith(${{ github.head_ref || github.ref_name }}, 'cat2')
+    if: (github.head_ref || github.ref_name) == 'cat1' || startsWith((github.head_ref || github.ref_name), 'cat2')
     name: Publish-cat
     runs-on: [ cat ]
     steps:
