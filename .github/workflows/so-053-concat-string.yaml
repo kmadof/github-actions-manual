@@ -1,0 +1,21 @@
+name: Concat string in condition
+
+on:
+    workflow_dispatch:
+
+#https://stackoverflow.com/questions/77196713/how-to-concat-string-in-github-actions-if-condition
+
+env:
+  DEVELOP_BRANCH_NAME: "main"
+  RELEASE_BRANCH_NAME: "release"
+
+
+jobs:
+  test:
+    name: test
+    runs-on: [ linux ]
+    if: github.ref == format('refs/heads/{0}', env.RELEASE_BRANCH_NAME)
+
+    steps:
+      - name: echo
+        run: echo "Hello World"
