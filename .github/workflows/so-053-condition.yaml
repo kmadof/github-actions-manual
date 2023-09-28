@@ -1,0 +1,29 @@
+name: cat actions
+on:
+  workflow_dispatch:
+
+# https://stackoverflow.com/questions/77191091/why-does-this-job-run-on-github-regardless-of-my-conditional
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  
+jobs:
+  cat:
+    if: ${{ github.head_ref || github.ref_name }} == 'cat1' || startsWith(${{ github.head_ref || github.ref_name }}, 'cat2')
+    name: Publish-cat
+    runs-on: [ cat ]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Display GitHub Context
+        run: |
+          echo "Head Ref: ${{ github.head_ref }}"
+          echo "Ref Name: ${{ github.ref_name }}"
+          echo "Ref Name: ${{ github.head_ref || github.ref_name }}"
