@@ -1,0 +1,15 @@
+name: Loop in bash
+
+on:
+    workflow_dispatch:
+
+jobs:
+    rspec:
+        runs-on: ubuntu-latest
+        steps:
+            - name: do something
+              shell: bash
+              run: |
+                for image in ${{ '["a", "b", "c"]' }} ; do
+                    echo "Will push image $image"
+                done
