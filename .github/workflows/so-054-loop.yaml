@@ -10,6 +10,6 @@ jobs:
             - name: do something
               shell: bash
               run: |
-                for image in ${{ '["a", "b", "c"]' }} ; do
+                for image in ${{ fromJSON('["a", "b", "c"]') }} ; do
                     echo "Will push image $image"
                 done
